@@ -11,9 +11,9 @@ struct ListNode* rotateRight(struct ListNode* head, int k)
     
     int c = 1;  // c for storing length of the list
     
-    while (tmp->next != NULL) 
+    while (temp->next != NULL) 
     {
-        tmp = tmp->next;
+        temp = temp->next;
         c++;
     }
   // temp is pointing to the last node now
@@ -51,13 +51,13 @@ struct ListNode* rotateRight(struct ListNode* head, int k)
     struct ListNode* knode = current;
  
     // Change next of last node to previous head
-    tmp->next = head;
+    temp->next = head;
  
     // Change head to (k+1)th node
     head = knode->next;
  
     // Change next of kth node to NULL
-    kthnode->next = NULL;
+    knode->next = NULL;
  
     // Return the updated head 
     return head;
