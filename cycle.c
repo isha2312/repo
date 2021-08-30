@@ -9,6 +9,9 @@ struct ListNode *detectCycle(struct ListNode *head) {
     while(hare!=NULL && tortoise!=NULL)
     {
         tortoise=tortoise->next; //move by one step
+        
+        if(hare->next==NULL)
+            break;
         hare=hare->next->next;  //move by 2 steps
         
         if(hare==tortoise)
