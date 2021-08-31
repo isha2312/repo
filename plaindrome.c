@@ -9,6 +9,8 @@ bool isPalindrome(struct ListNode* head)
     while(slow!=NULL && fast!=NULL)
     {
         slow=slow->next;
+           if(fast->next==NULL)
+                  break;
         fast=fast->next->next;
     }
      // now slow stores the middle element of list
