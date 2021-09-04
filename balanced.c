@@ -6,10 +6,8 @@ int top=-1;
 
 char pop() 
 {
-    int k;
-    k=top; 
-    top=top-1;// after returning the top element, value of top changes for next call
-    return stack[k];// returning the element at top
+   // after returning the top element, value of top changes for next call
+    return stack[top--];
    
 }  
 
@@ -37,8 +35,8 @@ int match(char character1, char character2)
 void balance(char *s) 
 {
     
-    char t,l,flag;
-     int n,i,k,o;
+    char l,k;
+     int n,i,o;
      
   for(i=0;s[i]!='\0';i++)
   {
