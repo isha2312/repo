@@ -44,3 +44,37 @@ int main()
 
     return 0;
 }
+
+
+
+
+
+// leetcode solution
+// 49/61 test cases passed (time limit exceeded)
+
+int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize)
+{
+  int j,i,t,s=0,max;
+    
+    
+    int *arr= (int*)malloc(numsSize*sizeof(int));
+ 
+    for (i=0;i <= numsSize-k; i++) 
+    {
+        max = nums[i];
+        for (j = 1; j<k; j++) 
+        {
+            if (nums[i + j] > max)
+            {
+                max = nums[i + j];
+                
+            }
+        }
+       
+       arr[s]=max;
+        s++;
+    }
+    *returnSize=s;
+    return arr;
+   
+}
