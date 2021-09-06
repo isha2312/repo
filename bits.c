@@ -66,9 +66,12 @@ int conditional(int x, int y, int z)
  // Nonzero = 1
  // Zero = 0
  
-  int var = (~(x & 1) + 1);
-  return ((var & y) + ((~var) & z));
+   int b = ~a +0x01;
+   
+   // if 0 then it cuts off y and value of y is returned and is not zero then cuts off z
+   return (b & y) | (~b & z);
 }
+
 
 
 
