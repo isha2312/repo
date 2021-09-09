@@ -62,7 +62,7 @@ int logicalShift(unsigned int x, int n)
 int conditional(int x, int y, int z) 
 {
   // Converts x to a boolean value
-   x = !(!x); 
+   a = !(!x); 
  // Nonzero = 1
  // Zero = 0
  
