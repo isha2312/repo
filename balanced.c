@@ -6,6 +6,8 @@ int top=-1;
 
 char pop() 
 {
+   if(top==-1)
+      return '0'; //if stack is empty
    // after returning the top element, value of top changes for next call
     return stack[top--];
    
