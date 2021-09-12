@@ -1,125 +1,116 @@
 // implement stacks using queue
 
 
-// 1. Implement stack operations
-
-#include <stdio.h>
-
-struct node {
-    int data;
-    struct node *next;
-}*top;
- 
-/*
-Initialize an empty stack
-*/
-void initialize() 
+typedef struct 
 {
-    top = NULL;
-} 
- 
-/*
-Checks if Stack is empty or not
-*/
-int isEmpty() 
-{
-    if (top == NULL) 
-        return 1;
-    else
-        return 0;
-}
- 
-/*
-Returns the top element of Stack
-*/
-int peek() 
-{
-    return top->data;
-}
- 
-
-// Push an Element in Stack 
-void push(int num) 
-{
-    struct node *temp;
-    temp =(struct node *)malloc(1*sizeof(struct node));
-
-    temp->data = num;
-     
-    if (top == NULL)
-     {
-        top = temp;
-        top->next = NULL;
-    } 
-    else
-     {
-        temp->next = top;
-        top = temp;
-    }
-}
- 
-
-//Pop Operation: Removes Top Element of the Stack
-
-void pop() 
-{
-    struct node *temp;
-    if (isEmpty(top))
-     {
-        printf("\nStack is Empty\n");
-        return;
-    } '
-    else
-     {
-        temp = top;
-        top = top->next;
-        printf("Removed  Element : %d\n", temp->data);   
-        free(temp); 
-    }
-}
- 
-/*
- Prints the linked list representation of a stack  
-*/
-void printStack(struct node *node) 
-{
-  while (node != NULL) 
-  {
-     printf("%d", node->data);
-     nodePtr = node->next;
-     if(node!= NULL)
-         printf(" ");
-  }
-  printf("\n");
-}
- 
-int main() 
-{
-   /* Initialize Stack */
-   initialize();
-
-   /* Push Elements in stack */
-   push(1);
-   push(2);
-   push(3);
-   push(4);
-
-   /* Printing top element of Stack */
-   printf("\nTop Element : %d\n", peek());
-
-   /* Printing Stack */
-   printf("Stack as linked List\n");
-
-   printStack(top);
-
-   /* Removing elements from stack */
-   pop();
-   pop();
-   pop();
-   pop();
-   pop();
-
-   printStack(top);
+ int data;
     
-   return 0;
+} MyStack;
+
+/* Initialize your data structure here. */
+
+int size;
+int front;
+int end;
+
+int size2;
+int front2;
+int end2;
+
+int size3;
+int front3;
+int end3;
+
+
+MyStack* myStackCreate() 
+{    
+     MyStack *queue = (MyStack *)calloc(1000 , sizeof(MyStack));
+     size = 0;
+     front = 0;
+     end = 0;
+     size3 = 0;
+     front3 = 0;
+     end3 = 0;
+     return queue;
+}
+
+MyStack* myStackCreate2() 
+{    
+     MyStack *queue2 = (MyStack *)calloc(1000 , sizeof(MyStack));
+     size2 = 0;
+     front2 = 0;
+     end2 = 0;
+     return queue2;
+}
+
+MyStack *stack;
+
+ void createstack() 
+{    
+     stack = (MyStack *)calloc(1000 , sizeof(MyStack));
+     size3 = 0;
+     front3 = 0;
+     end3 = 0;
+}
+
+ 
+
+/** Push element x onto stack. */
+void myStackPush(MyStack* queue, int x) 
+{
+    MyStack *queue2 = myStackCreate2();
+    int pt=0;
+    int sz=size3;
+    
+    for(int i=front;i<=end-1;i++)
+    {
+        queue2[pt++].data=queue[i].data;
+    }
+    
+   
+    createstack();
+    myStackCreate();
+    
+    queue[end++].data = x;
+    
+    for(int i=0;i<sz;i++)
+    {
+        queue[end++].data=queue2[i].data;
+    }
+    
+    int index=end-1;
+    for(int i=0;i<end;i++)
+    {
+        stack[index--].data = queue[i].data;
+    }
+    
+    
+    size3=sz+1;
+    end3=end;
+}
+
+/** Removes the element on top of the stack and returns that element. */
+int myStackPop(MyStack* queue) 
+{
+    int ele = stack[end3-1].data;
+    end3--;
+    size3--;
+    return ele;
+}
+
+/** Get the top element. */
+int myStackTop(MyStack* queue)
+{
+    return stack[end3-1].data;
+}
+
+/** Returns whether the stack is empty. */
+bool myStackEmpty(MyStack* queue) 
+{
+    return end3 == 0;  
+}
+
+void myStackFree(MyStack* queue) 
+{
+    free(queue);    
 }
